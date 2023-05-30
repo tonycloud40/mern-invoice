@@ -22,8 +22,11 @@ show-logs-client:
 user:
 	docker run --rm mern-invoice-api whoami
 
-get-inside:
+get-inside-api:
 	docker run --rm -it mern-invoice-api sh
+
+get-inside-client:
+	docker run --rm -it mern-invoice-client sh
 
 volume:
 	docker volume inspect mern-invoice_mongodb-data
