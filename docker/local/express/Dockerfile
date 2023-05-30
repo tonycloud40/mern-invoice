@@ -12,8 +12,8 @@ ARG APP_HOME=/app
 
 WORKDIR ${APP_HOME}
 
-RUN addgroup --system invoice \
-  && adduser --system --ingroup invoice invoice
+#RUN addgroup --system invoice \
+#  && adduser --system --ingroup invoice invoice
 
 RUN apk --update add ttf-freefont fontconfig && rm -rf /var/cache/apk/*
 
@@ -32,10 +32,10 @@ COPY package*.json ./
 
 RUN npm install
 
-COPY --chown=invoice:invoice . ${APP_HOME}
+COPY --chown=node:node . ${APP_HOME}
 
-RUN chown invoice:invoice ${APP_HOME}
+RUN chown node:node ${APP_HOME}
 
-USER invoice
+USER node
 
 CMD [ "npm","run","dev" ]
